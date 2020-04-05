@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.member">
+	<insert id="insert">
+		<![CDATA[
+			insert into OSM_MEMBER(
+					osm_m_index,osm_m_id,osm_m_password,
+					osm_m_nickname,osm_m_name,
+					osm_m_birth,osm_m_age,
+					osm_m_gender,osm_m_zipcode,
+					osm_m_address1,osm_m_address2,
+					osm_m_phone,osm_m_email
+					)
+			values(
+				   (select nvl(max(osm_m_index),0)+1 from OSM_MEMBER),
+				   #{m_id},#{m_password},#{m_nickname},#{m_name},#{m_birth},#{m_age},
+				   #{m_gender},#{m_zipcode},#{m_address1},#{m_address2},
+				   #{m_phone},#{m_email}
+					)
+		]]>
+	</insert>
+	
+	<select id="select" resultType="memberDTO" parameterType="map">
+		<![CDATA[
+		select  
+		 	osm_m_index as "m_index",
+	 	 	osm_m_id as "m_id",
+	  	 	osm_m_name as "m_name",
+	  	 	osm_m_nickname as "m_nickname",
+	  	 	osm_m_birth as "m_birth",
+	  	 	osm_m_age as "m_age",
+	  	 	osm_m_zipcode as "m_zipcode",
+	  	 	osm_m_address1 as "m_address1",
+	  	 	osm_m_address2 as "m_address2",
+	  	 	osm_m_phone as "m_phone",
+	  	 	osm_m_email as "m_email",
+	  	 	osm_m_date as "m_date",
+	  	 	decode(osm_m_gender,'0','남자','여자') "gender",
+	 	 	decode(osm_m_grant,'a','운영자','z','일반회원','미정') as "grant"  
+	 	from OSM_MEMBER
+		]]>
+		<where>
+			<choose>
+				<when test="memberDTO != null">
+					osm_m_id = #{memberDTO.m_id}
+				</when>
+				<when test="searchDTO != null">
+					${searchDTO.target} = #{searchDTO.value}
+				</when>
+			</choose>
+		</where>
+	</select>
+	
+	<update id="update">
+		update OSM_MEMBER set 
+		<choose>
+			<when test="m_password != null">
+				osm_m_password = #{m_password}
+			</when>
+			<when test="m_grant !=''">
+				osm_m_grant = #{m_grant}
+			</when>
+			<otherwise>
+				osm_m_nickname = #{m_nickname},
+				osm_m_zipcode = #{m_zipcode},
+				osm_m_address1 = #{m_address1},
+				osm_m_address2 = #{m_address2},
+				osm_m_phone = #{m_phone},
+				osm_m_email = #{m_email}
+			</otherwise>
+		</choose>
+		<where>
+			osm_m_id = #{m_id}
+		</where> 
+	</update>
+	<delete id = "delete" >
+		delete from osm_member
+		<where>
+			osm_m_id = #{m_id} and osm_m_password = #{m_password}
+		</where>
+	</delete>
+</mapper>
