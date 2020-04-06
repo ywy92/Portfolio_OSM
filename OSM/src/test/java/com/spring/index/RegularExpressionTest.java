@@ -35,7 +35,6 @@ public class RegularExpressionTest {
 	
 	@Test
 	public void testTelRegular() throws Exception {
-		//assertTrue(Pattern.matches("{0,3}[010|011|019]+?[:-:]+?[0-9]{3,4}[:-:]+?[0-9]{4}", "010-2571-3945"));
 		assertTrue(Pattern.matches("{3}[010]+?[-]+?[0-9]{3,4}[-]+?[0-9]{4}", "010-2222-3333"));
 	}
 
