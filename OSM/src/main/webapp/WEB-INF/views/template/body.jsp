@@ -20,6 +20,21 @@
 .group{
 	display: inline-block;
 }
+.select strong{
+	display:block;
+	text-align:center;
+	font-size: 20px;
+	width: 320px;
+	height: 35px;
+}
+.select select{
+	padding:10px 12px;
+	border-radius: 20px;
+	width: 88px;
+	height: 42px;
+	font-size: 16px;
+}
+
 .group label{
 	float:left;
 	font-size: 20px;
