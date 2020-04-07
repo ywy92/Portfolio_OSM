@@ -28,7 +28,7 @@ public class RegularExpressionTest {
 	
 	@Test
 	public void testGmailRegular()throws Exception { 
-		assertTrue(Pattern.matches("{0}[a-zA-Z]+?[a-zA-Z0-9|_]{0,9}[:@:]+?[a-z]{0,8}[:.:]+?[com|([kr][:.:]+?[co])]+?", "ywyi1992@GMAIL.com"));
+		assertTrue(Pattern.matches("{0}[a-zA-Z]+?[a-zA-Z0-9|_]{0,9}[:@:]+?[a-z]{0,8}[:.:]+?[com|([kr][:.:]+?[co])]+?", "ywyi1992@gmail.com"));
 		
 		
 	}

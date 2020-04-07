@@ -1,0 +1,95 @@
+.wrap {
+	margin: auto;
+	text-align: center;
+}
+
+.wrap .form {
+	margin: auto;
+	max-width: 500px;
+}
+
+.group {
+	display: inline-block;
+}
+
+.group strong {
+	display: block;
+	text-align: center;
+	font-size: 20px;
+	width: 320px;
+	height: 35px;
+}
+
+.select select {
+	padding: 10px 12px;
+	border-radius: 20px;
+	width: 88px;
+	height: 42px;
+	font-size: 16px;
+}
+
+.group .radio_man, .radio_woman {
+	display: inline-block;
+	float: left;
+	width: 49%;
+	height: 49%;
+}
+
+.group .radio_man span, .radio_woman span {
+	font-size: 22px;
+	font-weight: 400;
+}
+
+input[type='radio'] {
+	width: 20px;
+	height: 20px;
+}
+.group label {
+	float: left;
+	font-size: 20px;
+	font-weight: 900;
+}
+
+.group .input input {
+	width: 320px;
+	height: 35px;
+	font-size: 30px;
+	text-align: center;
+}
+.group .zipcode{
+	width: 324px;
+	height: 72px;
+	margin-top: 30px;
+}
+.group .zipcode input{
+	width: 68%;
+	height: 35px;
+	font-size: 30px;
+	text-align: center;
+}
+.group .zipcode button{
+	width: 28%;
+	height: 45px;
+}
+
+.input .flag {
+	text-align: center;
+	margin: 3px 0px;
+	height: 21px;
+}
+.group .flag,.fail,.sucess{ 
+	margin: 0px;
+	width: 324px;
+	height: 21px;
+}
+.group p[class='fail'] {
+	color: red;
+}
+
+.group p[class='success'] {
+	color: green;
+}
+.button button{
+	width: 162px;
+	height: 60px;	 
+}
