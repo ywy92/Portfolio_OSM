@@ -49,7 +49,6 @@
 			var parent = $(self).parents(".group")
 			return $(parent).children("p");
 		}
-
 		function RegularExpression(target, value) {
 			var checkMsg = null;
 			switch (target) {
@@ -66,9 +65,10 @@
 			case "m_password":
 				break;
 			case "m_nickname":
+				/* /[\s|ㄱ-ㅎㅏ-ㅣ|~!@#$%^&*()_+-=\\\|\[\]{}\.\,\/?].?/.test(value) */
 				checkMsg = /^[0-9]/.test(value)?"숫자로 시작할수 없습니다." 
-						:/[\s|ㄱ-ㅎㅏ-ㅣ|~!@#$%^&*()_+-=\\\|\[\]{}\.\,\/?].?/.test(value)?"자음모음,특수문자를 포함할수 없습니다."
-								:null;  
+						:/([^a-z|^a-z0-9|^a-zA-Z0-9|^a-zA-Z0-9가-힣|^가-힣0-9|^가-힣a-zA-Z|^가-힣a-z|^가-힣])+?/.test(value)?"공백,자음모음,특수문자를 포함할수 없습니다."
+								:value.length<2;  
 							
 				break;
 			}
