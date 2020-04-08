@@ -24,7 +24,7 @@
 			target = target == "#woman" ? "#man" : "#woman";
 			$(target).prop('checked', true);
 		});
-		$("input").focus(function() {
+		$("input").change(function() {
 			if ($(this).attr('readonly') == undefined) {
 				InputValueCheck($(this).attr('name'));
 			}
@@ -34,8 +34,7 @@
 				var self = $(this);
 				var value = $(self).val();
 				var checkMsg = RegularExpression(target, value);
-				var flag = NodeSelector($(self).parents(".group")); 
-				console.log(flag);
+				var flag = NodeSelector(self);
 				if (checkMsg != null) {
 					$(flag).html(checkMsg);
 					$(flag).attr('class', 'fail');
@@ -44,50 +43,88 @@
 				}
 				FinallyCheck(self);
 			});
-		} 
-		function NodeSelector(parent){
-			var children = $(parent).children("p");
-			return $(children).attr('class');
 		}
+
+		function NodeSelector(self) {
+			var parent = $(self).parents(".group")
+			return $(parent).children("p");
+		}
+
 		function RegularExpression(target, value) {
 			var checkMsg = null;
 			switch (target) {
 			case "m_name":
 				checkMsg = value.length<2 || value.length>5 ? "최소 2글자 최대 5글자입니다."
-						: null;
+						: /[가-힣]{2,5}/.test(value) ? null : "한글로만 입력이 가능합니다.";
+				break;
+			case "m_id":
+				checkMsg = value.length<4 || value.length>15 ? "최소 4글자 최대 12 글자입니다."
+						:/^[0-9]/.test(value) ?"숫자로 시작하실수 없습니다."  
+						:/[\W|_].?/.test(value)?"공백,특수문자,한글을 포함할수 없습니다."
+								: null;
+				break;
+			case "m_password":
+				break;
+			case "m_nickname":
+				checkMsg = /^[0-9]/.test(value)?"숫자로 시작할수 없습니다." 
+						:/[\s|ㄱ-ㅎㅏ-ㅣ|~!@#$%^&*()_+-=\\\|\[\]{}\.\,\/?].?/.test(value)?"자음모음,특수문자를 포함할수 없습니다."
+								:null;  
+							
 				break;
 			}
 			return checkMsg;
 		}
-		function FinallyCheck(self){
+
+		function FinallyCheck(self) {
 			var target = $(self).attr('name');
 			var value = $(self).val();
-			var flag = NodeSelector($(self).parents('.group'));
-			console.log(target);
+			var flag = NodeSelector(self);
 			var msg = null;
 			switch (target) {
 			case "m_name":
-				msg = "이쁜 이름이시네요!"; 
+				msg = "이쁜 이름이시네요!";
 				break;
 			case "m_id":
-			case "m_nickname":				
-				Duplicate(target, value)
+			case "m_nickname":
+				Duplicate(self)
 				break;
 			case "m_password":
 				msg = "비밀번호를 확인해 주세요.";
+				$("#m_password_check").focus();
 				break;
 			default:
-				
+
 				break;
 			}
-			if(msg != null){
+			if (msg != null) {
 				$(flag).html(msg);
-				$(flag).attr('class','success');
+				$(flag).attr('class', 'success');
 			}
 		}
-		function Duplicate(target, value) {
-			console.log(target);
-			console.log(value);
+		function Duplicate(self) {
+			var target = $(self).attr('name');
+			target = "osm_"+target;
+			var value = $(self).val();
+			$.ajax({
+				type: 'post',
+				url : "/member/duplicate",
+				dataType : "text",
+				data:{
+					target:target,
+					value:value
+						},
+				success:function(result){
+					var flag = NodeSelector(self);
+					var msg = result=='success'?"사용하셔도":"중복된";
+						msg += " "+( $(self).attr('name') == "m_id"?"아이디":"닉네임");
+						msg +=" 입니다.";
+					$(flag).attr('class',result);
+					$(flag).html(msg);
+					if(result == "fail"){
+						$(self).focus(); 
+					}
+				}		
+			});
 		}
 	});
 </script>

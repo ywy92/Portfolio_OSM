@@ -3,5 +3,7 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.spring.member.model.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="com.spring.common.model.TargetAndValueDTO" alias="tavDTO"/>
+		<typeAlias type="com.spring.common.model.DuplicateDTO" alias="duplicateDTO"/>
 	</typeAliases>
 </configuration>

@@ -76,9 +76,18 @@
 		</where> 
 	</update>
 	<delete id = "delete" >
-		delete from osm_member
+		delete from OSM_MEMBER
 		<where>
 			osm_m_id = #{m_id} and osm_m_password = #{m_password}
 		</where>
 	</delete>
+	
+	<select id="duplicate" resultType="memberDTO" parameterType="duplicateDTO">
+		<![CDATA[
+			select osm_m_index as "m_index" from OSM_MEMBER 
+		]]>
+		<where>
+				${target}=#{value} 
+		</where>
+	</select>
 </mapper>

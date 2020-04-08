@@ -207,5 +207,10 @@ public class MemberDTO implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+
+	@Override
+	public String toString() {
+		return "MemberDTO [m_index=" + m_index + "]";
+	}
 	
 }

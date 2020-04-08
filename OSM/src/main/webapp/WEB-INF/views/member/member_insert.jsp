@@ -29,8 +29,10 @@
 				<label for='m_password'>비밀번호</label>  
 				<div class ='input' id='input_password'>
 					<input type="password" name='m_password' id='m_password'/>
-					<p class='flag'></p>
 				</div>
+					<p class='flag'></p>
+			</div>
+			<div class='group'>
 				<label for='m_password_check'>비밀번호 확인</label>
 				<div class='input' id='input_password_check'>
 					<input type='password' name='m_password2' id='m_password_check'/> 

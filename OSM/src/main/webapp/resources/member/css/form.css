@@ -18,7 +18,7 @@
 	font-size: 20px;
 	width: 320px;
 	height: 35px;
-}
+} 
 
 .select select {
 	padding: 10px 12px;
@@ -77,7 +77,7 @@ input[type='radio'] {
 	margin: 3px 0px;
 	height: 21px;
 }
-.group .flag,.fail,.sucess{ 
+.group .flag,.fail,.success{ 
 	margin: 0px;
 	width: 324px;
 	height: 21px;
@@ -86,7 +86,7 @@ input[type='radio'] {
 	color: red;
 }
 
-.group p[class='success'] {
+.group p[class='success'] { 
 	color: green;
 }
 .button button{

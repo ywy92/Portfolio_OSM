@@ -16,6 +16,8 @@ create table OSM_MEMBER(
 	osm_m_date date default sysdate
 );
 
+select * from OSM_MEMBER where osm_m_id = 'admin'
+
 drop table OSM_MEMBER
 
 
