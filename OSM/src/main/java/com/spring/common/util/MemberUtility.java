@@ -6,7 +6,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-@Component("memberUtil")
+@Component("memberUtil") 
 public class MemberUtility {
 
 	public MemberUtility() {

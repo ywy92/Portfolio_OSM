@@ -68,8 +68,8 @@ public class MemberTest {
 		List<MemberDTO> memberList = sqlSession.selectList("com.spring.member.select");
 		assertNotNull(memberList);
 		MemberDTO dto = memberList.get(0);
-		assertEquals(dto.getGender(), "남자");
-		assertEquals(dto.getGrant(), "운영자");
+		assertEquals(dto.getRealGender(), "남자");
+		assertEquals(dto.getRealGrant(), "운영자");
 	}
 
 	@Test
@@ -79,7 +79,7 @@ public class MemberTest {
 		dto.setM_id("admin");
 		map.put("memberDTO", dto);
 		dto = sqlSession.selectOne("com.spring.member.select", map);
-		assertEquals(dto.getGender(), "남자");
+		assertEquals(dto.getRealGender(), "남자");
 	}
 
 	@Test
@@ -88,8 +88,8 @@ public class MemberTest {
 		map.put("searchDTO", new SearchDTO("osm_m_name", "윤원용"));
 		List<MemberDTO> list = sqlSession.selectList("com.spring.member.select", map);
 		MemberDTO memberDTO = list.get(0);
-		assertEquals(memberDTO.getGender(), "남자");
-		assertEquals(memberDTO.getGrant(), "운영자");
+		assertEquals(memberDTO.getRealGender(), "남자");
+		assertEquals(memberDTO.getRealGrant(), "운영자");
 	}
 
 

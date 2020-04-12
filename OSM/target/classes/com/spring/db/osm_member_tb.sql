@@ -2,7 +2,7 @@ create table OSM_MEMBER(
 	osm_m_index number(10) primary key,
 	osm_m_id varchar2(15) unique not null,
 	osm_m_password varchar2(40) not null,
-	osm_m_nickname varchar2(15) unique not null,
+	osm_m_nickname varchar2(21) unique not null,
 	osm_m_name varchar2(21) not null check(regexp_like(osm_m_name,'^[가-힣]{2,}')),
 	osm_m_birth date not null,
 	osm_m_age number(3) check(osm_m_age > 15),
@@ -16,9 +16,17 @@ create table OSM_MEMBER(
 	osm_m_date date default sysdate
 );
 
+select * from cols
+where table_name = 'OSM_MEMBER'
+
+delete from OSM_MEMBER 
+where osm_m_id = 'ywyi1992'
+
+alter table OSM_MEMBER modify osm_m_nickname  varchar2(21)
+
 select * from OSM_MEMBER where osm_m_id = 'admin'
 
-drop table OSM_MEMBER
+drop table OSM_MEMBER 
 
 
 select * from OSM_MEMBER

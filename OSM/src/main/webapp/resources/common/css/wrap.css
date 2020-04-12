@@ -1,0 +1,52 @@
+.wrap {
+	margin: auto;
+	text-align: center;
+}
+
+.wrap .form {
+	margin: auto;
+	max-width: 500px;
+}
+
+.group {
+	display: inline-block;
+}
+.group label {
+	float: left;
+	font-size: 20px;
+	font-weight: 900;
+}
+.group .input input {
+	width: 320px;
+	height: 35px;
+	font-size: 30px;
+	text-align: center;
+}
+.button button{
+	width: 162px;
+	height: 60px;	 
+}
+
+.input .flag {
+	text-align: center;
+	margin: 3px 0px;
+	height: 21px;
+}
+
+.group .flag,.fail,.success,.length,.stash{ 
+	margin: 0px;
+	width: 324px;
+	height: 21px;
+}
+.group p[class='fail'] {
+	color: red;
+}
+.group p[class='success'] { 
+	color: green;
+}
+.group p[class='length'],p[class='stash']{ 
+	color:black;
+}
+.group p[class='length'] span{
+	color: graytext;
+}

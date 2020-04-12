@@ -11,7 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "file:src/main/webapp/WEB-INF/spring/**/*.xml")
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/Spring/root-context.xml"})
 public class RegularExpressionTest {
 
 	public RegularExpressionTest() {
@@ -35,7 +35,9 @@ public class RegularExpressionTest {
 	
 	@Test
 	public void testTelRegular() throws Exception {
-		assertTrue(Pattern.matches("{3}[010]+?[-]+?[0-9]{3,4}[-]+?[0-9]{4}", "010-2222-3333"));
+		assertTrue(Pattern.matches("^[01]{1,2}[0-9]{1}", "010"));
+		//assertTrue(Pattern.matches("[01(?=0-9)]{3}[-]{1}", "010-"));
+		//assertTrue(Pattern.matches("[01(?=0-9)]{3}[-]{1}[0-9]{3,4}[-]{1}[0-9]{4}","010-2222-2222"));
 	}
 
 }

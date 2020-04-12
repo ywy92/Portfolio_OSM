@@ -20,8 +20,8 @@ public class MemberDTO implements Serializable {
 	private String m_email;
 	private char m_grant;
 	private String m_date;
-	private String gender;
-	private String grant;
+	private String realGender;
+	private String realGrant;
 
 	public MemberDTO() {
 	}
@@ -48,7 +48,6 @@ public class MemberDTO implements Serializable {
 	public MemberDTO(int m_index, String m_id, String m_password, String m_nickname, String m_name, String m_birth,
 			int m_age, char m_gender, String m_zipcode, String m_address1, String m_address2, String m_phone,
 			String m_email, char m_grant, String m_date, String gender, String grant) {
-		super();
 		this.m_index = m_index;
 		this.m_id = m_id;
 		this.m_password = m_password;
@@ -64,8 +63,8 @@ public class MemberDTO implements Serializable {
 		this.m_email = m_email;
 		this.m_grant = m_grant;
 		this.m_date = m_date;
-		this.gender = gender;
-		this.grant = grant;
+		this.realGender = gender;
+		this.realGrant = grant;
 	}
 
 	public int getM_index() {
@@ -188,20 +187,20 @@ public class MemberDTO implements Serializable {
 		this.m_date = m_date;
 	}
 
-	public String getGender() {
-		return gender;
+	public String getRealGender() {
+		return realGender;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setRealGender(String realGender) {
+		this.realGender = realGender;
 	}
 
-	public String getGrant() {
-		return grant;
+	public String getRealGrant() {
+		return realGrant;
 	}
 
-	public void setGrant(String grant) {
-		this.grant = grant;
+	public void setRealGrant(String realGrant) {
+		this.realGrant = realGrant;
 	}
 
 	public static long getSerialversionuid() {
@@ -210,7 +209,10 @@ public class MemberDTO implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MemberDTO [m_index=" + m_index + "]";
+		return "MemberDTO [m_index=" + m_index + ", m_id=" + m_id + ", m_password=" + m_password + ", m_nickname="
+				+ m_nickname + ", m_name=" + m_name + ", m_birth=" + m_birth + ", m_age=" + m_age + ", m_gender="
+				+ m_gender + ", m_zipcode=" + m_zipcode + ", m_address1=" + m_address1 + ", m_address2=" + m_address2
+				+ ", m_phone=" + m_phone + ", m_email=" + m_email + ", m_grant=" + m_grant + ", m_date=" + m_date
+				+ ", realGender=" + realGender + ", realGrant=" + realGrant + "]";
 	}
-	
 }

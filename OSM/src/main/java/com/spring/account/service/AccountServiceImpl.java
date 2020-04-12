@@ -1,4 +1,4 @@
-package com.spring.member.service;
+package com.spring.account.service;
 
 import java.util.List;
 
@@ -6,21 +6,20 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.spring.common.model.DuplicateDTO;
-import com.spring.member.model.MemberDTO;
-import com.spring.member.repository.MemberRepository;
+import com.spring.account.repository.AccountRepository;
 
-@Service("memberService")
-public class MemberServiceImpl implements MemberService {
-	@Resource(name="memberRepository")
-	private MemberRepository repository;
-	public MemberServiceImpl() {
+@Service("accountService")
+public class AccountServiceImpl implements AccountService {
+	@Resource(name = "accountRepository")
+	private AccountRepository repository;
+	public AccountServiceImpl() {
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public Integer register(Object dto) throws Exception {
-		return repository.create(dto);
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@Override
@@ -43,13 +42,7 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public List<Object> listAll() throws Exception {
-		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public String duplicate(DuplicateDTO dto) throws Exception {
-		return repository.duplicate(dto) == null? "success":"fail";
 	}
 
 }

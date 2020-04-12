@@ -37,8 +37,8 @@
 	  	 	osm_m_phone as "m_phone",
 	  	 	osm_m_email as "m_email",
 	  	 	osm_m_date as "m_date",
-	  	 	decode(osm_m_gender,'0','남자','여자') "gender",
-	 	 	decode(osm_m_grant,'a','운영자','z','일반회원','미정') as "grant"  
+	  	 	decode(osm_m_gender,'0','남자','여자') "realGender",
+	 	 	decode(osm_m_grant,'a','운영자','z','일반회원','미정') as "realGrant"  
 	 	from OSM_MEMBER
 		]]>
 		<where>
